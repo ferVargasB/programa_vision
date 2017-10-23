@@ -28,9 +28,6 @@ private:
     QGraphicsScene *escenaOriginal;
     QGraphicsScene *escenaProcesada;
 
-    //funcion para convertir a escala de grises
-    void convertirGris();
-
     //Funciones del apartado archivo
     void abrirImagen();
 
