@@ -51,11 +51,6 @@ void VentanaPrincipal::on_actionAbrir_Imagen_triggered()
     abrirImagen();
 }
 
-void VentanaPrincipal::convertirGris()
-{
-
-}
-
 void VentanaPrincipal::on_actionOperador_Igualdad_triggered()
 {
     realizarIgualdad();
