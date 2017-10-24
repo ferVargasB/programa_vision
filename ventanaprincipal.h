@@ -21,18 +21,25 @@ private slots:
 
     void on_actionOperador_Igualdad_triggered();
 
+    void on_actionInverso_Negativo_triggered();
+
+    void on_actionUmbral_triggered();
+
 private:
     Ui::VentanaPrincipal *ui;
     QImage *imgOriginal;
     QImage *imgProcesada;
     QGraphicsScene *escenaOriginal;
     QGraphicsScene *escenaProcesada;
+    int nivelDeUmbral;
 
     //Funciones del apartado archivo
     void abrirImagen();
 
     //Funciones de los operadores
     void realizarIgualdad();
+    void realizarInversoNegativo();
+    void realizarUmbral();
 };
 
 #endif // VENTANAPRINCIPAL_H

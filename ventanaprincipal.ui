@@ -91,6 +91,8 @@
      <string>Operadores</string>
     </property>
     <addaction name="actionOperador_Igualdad"/>
+    <addaction name="actionInverso_Negativo"/>
+    <addaction name="actionUmbral"/>
    </widget>
    <widget class="QMenu" name="menuArchivo">
     <property name="title">
@@ -118,6 +120,16 @@
   <action name="actionOperador_Igualdad">
    <property name="text">
     <string>Operador Igualdad</string>
+   </property>
+  </action>
+  <action name="actionInverso_Negativo">
+   <property name="text">
+    <string>Inverso Negativo</string>
+   </property>
+  </action>
+  <action name="actionUmbral">
+   <property name="text">
+    <string>Umbral</string>
    </property>
   </action>
  </widget>
