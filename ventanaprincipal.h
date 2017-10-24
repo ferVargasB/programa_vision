@@ -25,6 +25,8 @@ private slots:
 
     void on_actionUmbral_triggered();
 
+    void on_actionUmbral_Binario_triggered();
+
 private:
     Ui::VentanaPrincipal *ui;
     QImage *imgOriginal;
@@ -32,6 +34,8 @@ private:
     QGraphicsScene *escenaOriginal;
     QGraphicsScene *escenaProcesada;
     int nivelDeUmbral;
+    int u1;
+    int u2;
 
     //Funciones del apartado archivo
     void abrirImagen();
@@ -40,6 +44,8 @@ private:
     void realizarIgualdad();
     void realizarInversoNegativo();
     void realizarUmbral();
+    void realizarIntervaloUmbralBinario();
+
 };
 
 #endif // VENTANAPRINCIPAL_H

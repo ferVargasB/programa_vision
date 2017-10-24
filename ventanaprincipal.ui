@@ -93,6 +93,7 @@
     <addaction name="actionOperador_Igualdad"/>
     <addaction name="actionInverso_Negativo"/>
     <addaction name="actionUmbral"/>
+    <addaction name="actionUmbral_Binario"/>
    </widget>
    <widget class="QMenu" name="menuArchivo">
     <property name="title">
@@ -130,6 +131,11 @@
   <action name="actionUmbral">
    <property name="text">
     <string>Umbral</string>
+   </property>
+  </action>
+  <action name="actionUmbral_Binario">
+   <property name="text">
+    <string>Umbral Binario</string>
    </property>
   </action>
  </widget>

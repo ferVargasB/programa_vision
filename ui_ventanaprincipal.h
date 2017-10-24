@@ -34,6 +34,7 @@ public:
     QAction *actionOperador_Igualdad;
     QAction *actionInverso_Negativo;
     QAction *actionUmbral;
+    QAction *actionUmbral_Binario;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout;
@@ -63,6 +64,8 @@ public:
         actionInverso_Negativo->setObjectName(QStringLiteral("actionInverso_Negativo"));
         actionUmbral = new QAction(VentanaPrincipal);
         actionUmbral->setObjectName(QStringLiteral("actionUmbral"));
+        actionUmbral_Binario = new QAction(VentanaPrincipal);
+        actionUmbral_Binario->setObjectName(QStringLiteral("actionUmbral_Binario"));
         centralWidget = new QWidget(VentanaPrincipal);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -138,6 +141,7 @@ public:
         menuOperadores->addAction(actionOperador_Igualdad);
         menuOperadores->addAction(actionInverso_Negativo);
         menuOperadores->addAction(actionUmbral);
+        menuOperadores->addAction(actionUmbral_Binario);
         menuArchivo->addAction(actionAbrir_Imagen);
 
         retranslateUi(VentanaPrincipal);
@@ -152,6 +156,7 @@ public:
         actionOperador_Igualdad->setText(QApplication::translate("VentanaPrincipal", "Operador Igualdad", Q_NULLPTR));
         actionInverso_Negativo->setText(QApplication::translate("VentanaPrincipal", "Inverso Negativo", Q_NULLPTR));
         actionUmbral->setText(QApplication::translate("VentanaPrincipal", "Umbral", Q_NULLPTR));
+        actionUmbral_Binario->setText(QApplication::translate("VentanaPrincipal", "Umbral Binario", Q_NULLPTR));
         labelImagenPrincipal->setText(QApplication::translate("VentanaPrincipal", "Imagen Pricipal", Q_NULLPTR));
         labelHistogranaOriginal->setText(QApplication::translate("VentanaPrincipal", "H Original", Q_NULLPTR));
         labelImagenProcesada->setText(QApplication::translate("VentanaPrincipal", "Imagen Procesada", Q_NULLPTR));
