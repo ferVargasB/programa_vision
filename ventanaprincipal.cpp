@@ -139,6 +139,24 @@ void VentanaPrincipal::realizarUmbralEscalaGrises()
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
 }
 
+void VentanaPrincipal::realizarExtension()
+{
+    QImage imgCopia(imgOriginal->width(), imgOriginal->height(), QImage::Format_Grayscale8);
+    for (int c = 0; c < imgCopia.width(); c++){
+        for (int f = 0; f < imgCopia.height(); f++){
+             QColor pixel = imgOriginal->pixelColor(c,f);
+             auto nivelDeColor = pixel.value();
+             if ( nivelDeColor > u1 && nivelDeColor < u2){
+                 imgCopia.setPixelColor(c,f, ( (nivelDeColor-u1)*(255/(u2-u1)) ));
+             } else {
+                 imgCopia.setPixelColor(c,f, QColor(255,255,255));
+             }
+        }
+    }
+    *imgProcesada = imgCopia;
+    escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+}
+
 void VentanaPrincipal::on_actionAbrir_Imagen_triggered()
 {
     abrirImagen();
@@ -195,4 +213,9 @@ void VentanaPrincipal::on_actionAbrir_chart_triggered()
 void VentanaPrincipal::on_actionUmbral_Escala_de_Grises_triggered()
 {
     realizarUmbralEscalaGrises();
+}
+
+void VentanaPrincipal::on_actionExtension_triggered()
+{
+    realizarExtension();
 }

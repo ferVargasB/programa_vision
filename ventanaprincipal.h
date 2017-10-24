@@ -33,6 +33,8 @@ private slots:
 
     void on_actionUmbral_Escala_de_Grises_triggered();
 
+    void on_actionExtension_triggered();
+
 private:
     Ui::VentanaPrincipal *ui;
     QImage *imgOriginal;
@@ -53,6 +55,8 @@ private:
     void realizarIntervaloUmbralBinario();
     void realizarUmbralBinarioInv();
     void realizarUmbralEscalaGrises();
+    void realizarEscalaGrisesInv();
+    void realizarExtension();
 
 };
 

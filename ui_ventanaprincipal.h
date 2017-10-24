@@ -38,6 +38,7 @@ public:
     QAction *actionUmbral_Binario_Invertido;
     QAction *actionAbrir_chart;
     QAction *actionUmbral_Escala_de_Grises;
+    QAction *actionExtension;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout;
@@ -75,6 +76,8 @@ public:
         actionAbrir_chart->setObjectName(QStringLiteral("actionAbrir_chart"));
         actionUmbral_Escala_de_Grises = new QAction(VentanaPrincipal);
         actionUmbral_Escala_de_Grises->setObjectName(QStringLiteral("actionUmbral_Escala_de_Grises"));
+        actionExtension = new QAction(VentanaPrincipal);
+        actionExtension->setObjectName(QStringLiteral("actionExtension"));
         centralWidget = new QWidget(VentanaPrincipal);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -153,6 +156,7 @@ public:
         menuOperadores->addAction(actionUmbral_Binario);
         menuOperadores->addAction(actionUmbral_Binario_Invertido);
         menuOperadores->addAction(actionUmbral_Escala_de_Grises);
+        menuOperadores->addAction(actionExtension);
         menuArchivo->addAction(actionAbrir_Imagen);
         menuArchivo->addAction(actionAbrir_chart);
 
@@ -172,6 +176,7 @@ public:
         actionUmbral_Binario_Invertido->setText(QApplication::translate("VentanaPrincipal", "Umbral Binario Invertido", Q_NULLPTR));
         actionAbrir_chart->setText(QApplication::translate("VentanaPrincipal", "Abrir chart", Q_NULLPTR));
         actionUmbral_Escala_de_Grises->setText(QApplication::translate("VentanaPrincipal", "Umbral Escala de Grises", Q_NULLPTR));
+        actionExtension->setText(QApplication::translate("VentanaPrincipal", "Extension", Q_NULLPTR));
         labelImagenPrincipal->setText(QApplication::translate("VentanaPrincipal", "Imagen Pricipal", Q_NULLPTR));
         labelHistogranaOriginal->setText(QApplication::translate("VentanaPrincipal", "H Original", Q_NULLPTR));
         labelImagenProcesada->setText(QApplication::translate("VentanaPrincipal", "Imagen Procesada", Q_NULLPTR));
