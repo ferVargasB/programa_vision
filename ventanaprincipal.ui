@@ -16,11 +16,11 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="layOutOriginal">
       <item>
        <widget class="QLabel" name="labelImagenPrincipal">
         <property name="text">
-         <string>Imagen Pricipal</string>
+         <string>Principal</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -30,23 +30,10 @@
       <item>
        <widget class="QGraphicsView" name="graphicsViewOriginal"/>
       </item>
-      <item>
-       <widget class="QLabel" name="labelHistogranaOriginal">
-        <property name="frameShape">
-         <enum>QFrame::WinPanel</enum>
-        </property>
-        <property name="text">
-         <string>H Original</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item row="0" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="layOutProcesada">
       <item>
        <widget class="QLabel" name="labelImagenProcesada">
         <property name="text">
@@ -59,19 +46,6 @@
       </item>
       <item>
        <widget class="QGraphicsView" name="graphicsViewProcesada"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="labelHistogranaProcesada">
-        <property name="frameShape">
-         <enum>QFrame::WinPanel</enum>
-        </property>
-        <property name="text">
-         <string>H Procesada</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
       </item>
      </layout>
     </item>

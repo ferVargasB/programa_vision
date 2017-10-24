@@ -25,7 +25,6 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
     escenaProcesada = new QGraphicsScene;
     ui->graphicsViewOriginal->setScene(escenaOriginal);
     ui->graphicsViewProcesada->setScene(escenaProcesada);
-
 }
 
 VentanaPrincipal::~VentanaPrincipal()
@@ -41,6 +40,8 @@ void VentanaPrincipal::abrirImagen()
     img = img.convertToFormat(QImage::Format_Grayscale8,Qt::AutoColor);
     *imgOriginal = img;
     escenaOriginal->addPixmap(QPixmap::fromImage(*imgOriginal));
+
+    crearHistogramaOriginal();
 }
 
 void VentanaPrincipal::realizarIgualdad()
@@ -54,6 +55,8 @@ void VentanaPrincipal::realizarIgualdad()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarInversoNegativo()
@@ -68,6 +71,8 @@ void VentanaPrincipal::realizarInversoNegativo()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarUmbral()
@@ -86,6 +91,8 @@ void VentanaPrincipal::realizarUmbral()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarIntervaloUmbralBinario()
@@ -104,6 +111,8 @@ void VentanaPrincipal::realizarIntervaloUmbralBinario()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarUmbralBinarioInv()
@@ -122,6 +131,8 @@ void VentanaPrincipal::realizarUmbralBinarioInv()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarUmbralEscalaGrises()
@@ -140,6 +151,8 @@ void VentanaPrincipal::realizarUmbralEscalaGrises()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarExtension()
@@ -158,6 +171,8 @@ void VentanaPrincipal::realizarExtension()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarTraslacion()
@@ -167,7 +182,7 @@ void VentanaPrincipal::realizarTraslacion()
     matriz(2,0) = b;
     matriz(2,1) = a;
 
-    QImage imgCopia(imgOriginal->width()*2, imgOriginal->height()*2, QImage::Format_Grayscale8);
+    QImage imgCopia(imgOriginal->width()+a, imgOriginal->height()+b, QImage::Format_Grayscale8);
     for (int c = 0; c < imgOriginal->width(); c++){
         for (int f = 0; f < imgOriginal->height(); f++){
             //Primer paso
@@ -184,6 +199,35 @@ void VentanaPrincipal::realizarTraslacion()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+}
+
+void VentanaPrincipal::crearHistogramaOriginal()
+{
+    QLineSeries *series = new QLineSeries();
+    QChart *chart = new QChart();
+
+    for (int i = 0; i < imgOriginal->width(); i++){
+        for (int j = 0; j <imgOriginal->height(); j++){
+            QColor pixel = imgOriginal->pixelColor(i,j);
+            auto valorPixel = pixel.value();
+            QPoint coordenadaPixel(i, valorPixel);
+            series->append(coordenadaPixel);
+        }
+    }
+
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    chart->setTitle("Histograma");
+    chart->legend()->hide();
+    QChartView *chartView = new QChartView(chart,this);
+    ui->layOutOriginal->addWidget(chartView);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->show();
+}
+
+void VentanaPrincipal::crearHistogramaProcesada()
+{
+
 }
 
 void VentanaPrincipal::on_actionAbrir_Imagen_triggered()
@@ -218,25 +262,36 @@ void VentanaPrincipal::on_actionUmbral_Binario_Invertido_triggered()
 
 void VentanaPrincipal::on_actionAbrir_chart_triggered()
 {
-     QLineSeries *series = new QLineSeries();
+    QBarSet *set0 = new QBarSet("1");
 
-     series->append(0, 6);
-     series->append(2, 4);
-     series->append(3, 8);
-     series->append(7, 4);
-     series->append(10, 5);
-     *series << QPointF(11, 1) << QPointF(13, 3) << QPointF(17, 6) << QPointF(18, 3) << QPointF(20, 2);
+    for (int c = 0; c < imgOriginal->width(); c++){
+        for (int f = 0; f < imgOriginal->height(); f++){
+             QColor pixel = imgOriginal->pixelColor(c,f);
+             auto nivelDeColor = pixel.value();
+             *set0 << nivelDeColor;
+        }
+    }
 
-     QChart *chart = new QChart();
+    QBarSeries *series = new QBarSeries();
+    series->append(set0);
 
-     chart->addSeries(series);
-     chart->createDefaultAxes();
-     chart->setTitle("Simple line chart example");
 
-     ui->graphicsViewOriginal->setFixedSize(500, 500);
-     ui->graphicsViewOriginal->setSceneRect(0, 0, 500, 500);
-     ui->graphicsViewOriginal->fitInView(0, 0, 500, 500, Qt::KeepAspectRatio);
-     escenaOriginal->addItem(chart);
+    QChart *chart = new QChart();
+    chart->setAnimationDuration(0);
+    chart->addSeries(series);
+    chart->setTitle("Histograma");
+
+    //QStringList categories;
+    //categories << "Jan" << "Feb" << "Mar" << "Apr" << "May" << "Jun";
+    //axis->append(categories);
+    chart->createDefaultAxes();
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignCenter);
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    ui->layOutOriginal->addWidget(chartView);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->show();
 }
 
 void VentanaPrincipal::on_actionUmbral_Escala_de_Grises_triggered()

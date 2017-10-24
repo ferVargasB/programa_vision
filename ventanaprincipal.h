@@ -6,6 +6,9 @@
 #include <QGraphicsScene>
 #include <QVector2D>
 #include <QGenericMatrix>
+#include <QtCharts>
+#include <QLineSeries>
+#include <QChartView>
 
 namespace Ui {
 class VentanaPrincipal;
@@ -65,6 +68,10 @@ private:
     void realizarEscalaGrisesInv();
     void realizarExtension();
     void realizarTraslacion();
+
+    //Funciones para el los histogramas
+    void crearHistogramaOriginal();
+    void crearHistogramaProcesada();
 
 };
 

@@ -42,14 +42,12 @@ public:
     QAction *actionTranslacion;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *layOutOriginal;
     QLabel *labelImagenPrincipal;
     QGraphicsView *graphicsViewOriginal;
-    QLabel *labelHistogranaOriginal;
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *layOutProcesada;
     QLabel *labelImagenProcesada;
     QGraphicsView *graphicsViewProcesada;
-    QLabel *labelHistogranaProcesada;
     QMenuBar *menuBar;
     QMenu *menuOperadores;
     QMenu *menuArchivo;
@@ -87,53 +85,39 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        layOutOriginal = new QVBoxLayout();
+        layOutOriginal->setSpacing(6);
+        layOutOriginal->setObjectName(QStringLiteral("layOutOriginal"));
         labelImagenPrincipal = new QLabel(centralWidget);
         labelImagenPrincipal->setObjectName(QStringLiteral("labelImagenPrincipal"));
         labelImagenPrincipal->setAlignment(Qt::AlignCenter);
 
-        verticalLayout->addWidget(labelImagenPrincipal);
+        layOutOriginal->addWidget(labelImagenPrincipal);
 
         graphicsViewOriginal = new QGraphicsView(centralWidget);
         graphicsViewOriginal->setObjectName(QStringLiteral("graphicsViewOriginal"));
 
-        verticalLayout->addWidget(graphicsViewOriginal);
-
-        labelHistogranaOriginal = new QLabel(centralWidget);
-        labelHistogranaOriginal->setObjectName(QStringLiteral("labelHistogranaOriginal"));
-        labelHistogranaOriginal->setFrameShape(QFrame::WinPanel);
-        labelHistogranaOriginal->setAlignment(Qt::AlignCenter);
-
-        verticalLayout->addWidget(labelHistogranaOriginal);
+        layOutOriginal->addWidget(graphicsViewOriginal);
 
 
-        gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
+        gridLayout->addLayout(layOutOriginal, 0, 0, 1, 1);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        layOutProcesada = new QVBoxLayout();
+        layOutProcesada->setSpacing(6);
+        layOutProcesada->setObjectName(QStringLiteral("layOutProcesada"));
         labelImagenProcesada = new QLabel(centralWidget);
         labelImagenProcesada->setObjectName(QStringLiteral("labelImagenProcesada"));
         labelImagenProcesada->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(labelImagenProcesada);
+        layOutProcesada->addWidget(labelImagenProcesada);
 
         graphicsViewProcesada = new QGraphicsView(centralWidget);
         graphicsViewProcesada->setObjectName(QStringLiteral("graphicsViewProcesada"));
 
-        verticalLayout_2->addWidget(graphicsViewProcesada);
-
-        labelHistogranaProcesada = new QLabel(centralWidget);
-        labelHistogranaProcesada->setObjectName(QStringLiteral("labelHistogranaProcesada"));
-        labelHistogranaProcesada->setFrameShape(QFrame::WinPanel);
-        labelHistogranaProcesada->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_2->addWidget(labelHistogranaProcesada);
+        layOutProcesada->addWidget(graphicsViewProcesada);
 
 
-        gridLayout->addLayout(verticalLayout_2, 0, 1, 1, 1);
+        gridLayout->addLayout(layOutProcesada, 0, 1, 1, 1);
 
         VentanaPrincipal->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(VentanaPrincipal);
@@ -182,10 +166,8 @@ public:
         actionUmbral_Escala_de_Grises->setText(QApplication::translate("VentanaPrincipal", "Umbral Escala de Grises", Q_NULLPTR));
         actionExtension->setText(QApplication::translate("VentanaPrincipal", "Extension", Q_NULLPTR));
         actionTranslacion->setText(QApplication::translate("VentanaPrincipal", "Translacion", Q_NULLPTR));
-        labelImagenPrincipal->setText(QApplication::translate("VentanaPrincipal", "Imagen Pricipal", Q_NULLPTR));
-        labelHistogranaOriginal->setText(QApplication::translate("VentanaPrincipal", "H Original", Q_NULLPTR));
+        labelImagenPrincipal->setText(QApplication::translate("VentanaPrincipal", "Principal", Q_NULLPTR));
         labelImagenProcesada->setText(QApplication::translate("VentanaPrincipal", "Imagen Procesada", Q_NULLPTR));
-        labelHistogranaProcesada->setText(QApplication::translate("VentanaPrincipal", "H Procesada", Q_NULLPTR));
         menuOperadores->setTitle(QApplication::translate("VentanaPrincipal", "Operadores", Q_NULLPTR));
         menuArchivo->setTitle(QApplication::translate("VentanaPrincipal", "Archivo", Q_NULLPTR));
     } // retranslateUi
