@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I. -I../Qt/5.9.2/clang_64/lib/QtWidgets.framework/Headers -I../Qt/5.9.2/clang_64/lib/QtGui.framework/Headers -I../Qt/5.9.2/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../Qt/5.9.2/clang_64/mkspecs/macx-clang -F/Users/fernandovargas/Qt/5.9.2/clang_64/lib
+INCPATH       = -I. -I../Qt/5.9.2/clang_64/lib/QtCharts.framework/Headers -I../Qt/5.9.2/clang_64/lib/QtWidgets.framework/Headers -I../Qt/5.9.2/clang_64/lib/QtGui.framework/Headers -I../Qt/5.9.2/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../Qt/5.9.2/clang_64/mkspecs/macx-clang -F/Users/fernandovargas/Qt/5.9.2/clang_64/lib
 QMAKE         = /Users/fernandovargas/Qt/5.9.2/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -38,7 +38,7 @@ DISTNAME      = vision1.0.0
 DISTDIR = /Users/fernandovargas/programa_vision/.tmp/vision1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wl,-rpath,@executable_path/Frameworks -Wl,-rpath,/Users/fernandovargas/Qt/5.9.2/clang_64/lib
-LIBS          = $(SUBLIBS) -F/Users/fernandovargas/Qt/5.9.2/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
+LIBS          = $(SUBLIBS) -F/Users/fernandovargas/Qt/5.9.2/clang_64/lib -framework QtCharts -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -192,6 +192,7 @@ DIST          = ../Qt/5.9.2/clang_64/mkspecs/features/spec_pre.prf \
 		../Qt/5.9.2/clang_64/mkspecs/features/qt_config.prf \
 		../Qt/5.9.2/clang_64/mkspecs/macx-clang/qmake.conf \
 		../Qt/5.9.2/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../Qt/5.9.2/clang_64/mkspecs/features/exclusive_builds.prf \
 		../Qt/5.9.2/clang_64/mkspecs/features/mac/sdk.prf \
 		../Qt/5.9.2/clang_64/mkspecs/features/toolchain.prf \
@@ -374,6 +375,7 @@ Makefile: vision.pro ../Qt/5.9.2/clang_64/mkspecs/macx-clang/qmake.conf ../Qt/5.
 		../Qt/5.9.2/clang_64/mkspecs/features/qt_config.prf \
 		../Qt/5.9.2/clang_64/mkspecs/macx-clang/qmake.conf \
 		../Qt/5.9.2/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../Qt/5.9.2/clang_64/mkspecs/features/exclusive_builds.prf \
 		../Qt/5.9.2/clang_64/mkspecs/features/mac/sdk.prf \
 		../Qt/5.9.2/clang_64/mkspecs/features/toolchain.prf \
@@ -401,6 +403,7 @@ Makefile: vision.pro ../Qt/5.9.2/clang_64/mkspecs/macx-clang/qmake.conf ../Qt/5.
 		../Qt/5.9.2/clang_64/mkspecs/features/yacc.prf \
 		../Qt/5.9.2/clang_64/mkspecs/features/lex.prf \
 		vision.pro \
+		../Qt/5.9.2/clang_64/lib/QtCharts.framework/QtCharts.prl \
 		../Qt/5.9.2/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		../Qt/5.9.2/clang_64/lib/QtGui.framework/QtGui.prl \
 		../Qt/5.9.2/clang_64/lib/QtCore.framework/QtCore.prl
@@ -542,6 +545,7 @@ Makefile: vision.pro ../Qt/5.9.2/clang_64/mkspecs/macx-clang/qmake.conf ../Qt/5.
 ../Qt/5.9.2/clang_64/mkspecs/features/qt_config.prf:
 ../Qt/5.9.2/clang_64/mkspecs/macx-clang/qmake.conf:
 ../Qt/5.9.2/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../Qt/5.9.2/clang_64/mkspecs/features/exclusive_builds.prf:
 ../Qt/5.9.2/clang_64/mkspecs/features/mac/sdk.prf:
 ../Qt/5.9.2/clang_64/mkspecs/features/toolchain.prf:
@@ -569,6 +573,7 @@ Makefile: vision.pro ../Qt/5.9.2/clang_64/mkspecs/macx-clang/qmake.conf ../Qt/5.
 ../Qt/5.9.2/clang_64/mkspecs/features/yacc.prf:
 ../Qt/5.9.2/clang_64/mkspecs/features/lex.prf:
 vision.pro:
+../Qt/5.9.2/clang_64/lib/QtCharts.framework/QtCharts.prl:
 ../Qt/5.9.2/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 ../Qt/5.9.2/clang_64/lib/QtGui.framework/QtGui.prl:
 ../Qt/5.9.2/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -614,6 +619,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r vision.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -647,7 +653,7 @@ moc_ventanaprincipal.cpp: ../Qt/5.9.2/clang_64/lib/QtWidgets.framework/Headers/Q
 		ventanaprincipal.h \
 		moc_predefs.h \
 		../Qt/5.9.2/clang_64/bin/moc
-	/Users/fernandovargas/Qt/5.9.2/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/fernandovargas/Qt/5.9.2/clang_64/mkspecs/macx-clang -I/Users/fernandovargas/programa_vision -I/Users/fernandovargas/Qt/5.9.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/fernandovargas/Qt/5.9.2/clang_64/lib/QtGui.framework/Headers -I/Users/fernandovargas/Qt/5.9.2/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/fernandovargas/Qt/5.9.2/clang_64/lib ventanaprincipal.h -o moc_ventanaprincipal.cpp
+	/Users/fernandovargas/Qt/5.9.2/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/fernandovargas/Qt/5.9.2/clang_64/mkspecs/macx-clang -I/Users/fernandovargas/programa_vision -I/Users/fernandovargas/Qt/5.9.2/clang_64/lib/QtCharts.framework/Headers -I/Users/fernandovargas/Qt/5.9.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/fernandovargas/Qt/5.9.2/clang_64/lib/QtGui.framework/Headers -I/Users/fernandovargas/Qt/5.9.2/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/fernandovargas/Qt/5.9.2/clang_64/lib ventanaprincipal.h -o moc_ventanaprincipal.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -692,7 +698,9 @@ ventanaprincipal.o: ventanaprincipal.cpp ventanaprincipal.h \
 		../Qt/5.9.2/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
 		../Qt/5.9.2/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		../Qt/5.9.2/clang_64/lib/QtGui.framework/Headers/QPixmap \
-		../Qt/5.9.2/clang_64/lib/QtGui.framework/Headers/qpixmap.h
+		../Qt/5.9.2/clang_64/lib/QtGui.framework/Headers/qpixmap.h \
+		../Qt/5.9.2/clang_64/lib/QtCharts.framework/Headers/QChart \
+		../Qt/5.9.2/clang_64/lib/QtCharts.framework/Headers/qchart.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ventanaprincipal.o ventanaprincipal.cpp
 
 moc_ventanaprincipal.o: moc_ventanaprincipal.cpp 

@@ -95,12 +95,14 @@
     <addaction name="actionUmbral"/>
     <addaction name="actionUmbral_Binario"/>
     <addaction name="actionUmbral_Binario_Invertido"/>
+    <addaction name="actionUmbral_Escala_de_Grises"/>
    </widget>
    <widget class="QMenu" name="menuArchivo">
     <property name="title">
      <string>Archivo</string>
     </property>
     <addaction name="actionAbrir_Imagen"/>
+    <addaction name="actionAbrir_chart"/>
    </widget>
    <addaction name="menuOperadores"/>
    <addaction name="menuArchivo"/>
@@ -142,6 +144,16 @@
   <action name="actionUmbral_Binario_Invertido">
    <property name="text">
     <string>Umbral Binario Invertido</string>
+   </property>
+  </action>
+  <action name="actionAbrir_chart">
+   <property name="text">
+    <string>Abrir chart</string>
+   </property>
+  </action>
+  <action name="actionUmbral_Escala_de_Grises">
+   <property name="text">
+    <string>Umbral Escala de Grises</string>
    </property>
   </action>
  </widget>

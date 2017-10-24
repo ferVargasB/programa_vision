@@ -29,6 +29,10 @@ private slots:
 
     void on_actionUmbral_Binario_Invertido_triggered();
 
+    void on_actionAbrir_chart_triggered();
+
+    void on_actionUmbral_Escala_de_Grises_triggered();
+
 private:
     Ui::VentanaPrincipal *ui;
     QImage *imgOriginal;
@@ -48,6 +52,7 @@ private:
     void realizarUmbral();
     void realizarIntervaloUmbralBinario();
     void realizarUmbralBinarioInv();
+    void realizarUmbralEscalaGrises();
 
 };
 

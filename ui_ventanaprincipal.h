@@ -36,6 +36,8 @@ public:
     QAction *actionUmbral;
     QAction *actionUmbral_Binario;
     QAction *actionUmbral_Binario_Invertido;
+    QAction *actionAbrir_chart;
+    QAction *actionUmbral_Escala_de_Grises;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout;
@@ -69,6 +71,10 @@ public:
         actionUmbral_Binario->setObjectName(QStringLiteral("actionUmbral_Binario"));
         actionUmbral_Binario_Invertido = new QAction(VentanaPrincipal);
         actionUmbral_Binario_Invertido->setObjectName(QStringLiteral("actionUmbral_Binario_Invertido"));
+        actionAbrir_chart = new QAction(VentanaPrincipal);
+        actionAbrir_chart->setObjectName(QStringLiteral("actionAbrir_chart"));
+        actionUmbral_Escala_de_Grises = new QAction(VentanaPrincipal);
+        actionUmbral_Escala_de_Grises->setObjectName(QStringLiteral("actionUmbral_Escala_de_Grises"));
         centralWidget = new QWidget(VentanaPrincipal);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -146,7 +152,9 @@ public:
         menuOperadores->addAction(actionUmbral);
         menuOperadores->addAction(actionUmbral_Binario);
         menuOperadores->addAction(actionUmbral_Binario_Invertido);
+        menuOperadores->addAction(actionUmbral_Escala_de_Grises);
         menuArchivo->addAction(actionAbrir_Imagen);
+        menuArchivo->addAction(actionAbrir_chart);
 
         retranslateUi(VentanaPrincipal);
 
@@ -162,6 +170,8 @@ public:
         actionUmbral->setText(QApplication::translate("VentanaPrincipal", "Umbral", Q_NULLPTR));
         actionUmbral_Binario->setText(QApplication::translate("VentanaPrincipal", "Umbral Binario", Q_NULLPTR));
         actionUmbral_Binario_Invertido->setText(QApplication::translate("VentanaPrincipal", "Umbral Binario Invertido", Q_NULLPTR));
+        actionAbrir_chart->setText(QApplication::translate("VentanaPrincipal", "Abrir chart", Q_NULLPTR));
+        actionUmbral_Escala_de_Grises->setText(QApplication::translate("VentanaPrincipal", "Umbral Escala de Grises", Q_NULLPTR));
         labelImagenPrincipal->setText(QApplication::translate("VentanaPrincipal", "Imagen Pricipal", Q_NULLPTR));
         labelHistogranaOriginal->setText(QApplication::translate("VentanaPrincipal", "H Original", Q_NULLPTR));
         labelImagenProcesada->setText(QApplication::translate("VentanaPrincipal", "Imagen Procesada", Q_NULLPTR));
