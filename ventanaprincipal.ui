@@ -94,6 +94,7 @@
     <addaction name="actionInverso_Negativo"/>
     <addaction name="actionUmbral"/>
     <addaction name="actionUmbral_Binario"/>
+    <addaction name="actionUmbral_Binario_Invertido"/>
    </widget>
    <widget class="QMenu" name="menuArchivo">
     <property name="title">
@@ -136,6 +137,11 @@
   <action name="actionUmbral_Binario">
    <property name="text">
     <string>Umbral Binario</string>
+   </property>
+  </action>
+  <action name="actionUmbral_Binario_Invertido">
+   <property name="text">
+    <string>Umbral Binario Invertido</string>
    </property>
   </action>
  </widget>

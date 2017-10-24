@@ -35,6 +35,7 @@ public:
     QAction *actionInverso_Negativo;
     QAction *actionUmbral;
     QAction *actionUmbral_Binario;
+    QAction *actionUmbral_Binario_Invertido;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout;
@@ -66,6 +67,8 @@ public:
         actionUmbral->setObjectName(QStringLiteral("actionUmbral"));
         actionUmbral_Binario = new QAction(VentanaPrincipal);
         actionUmbral_Binario->setObjectName(QStringLiteral("actionUmbral_Binario"));
+        actionUmbral_Binario_Invertido = new QAction(VentanaPrincipal);
+        actionUmbral_Binario_Invertido->setObjectName(QStringLiteral("actionUmbral_Binario_Invertido"));
         centralWidget = new QWidget(VentanaPrincipal);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -142,6 +145,7 @@ public:
         menuOperadores->addAction(actionInverso_Negativo);
         menuOperadores->addAction(actionUmbral);
         menuOperadores->addAction(actionUmbral_Binario);
+        menuOperadores->addAction(actionUmbral_Binario_Invertido);
         menuArchivo->addAction(actionAbrir_Imagen);
 
         retranslateUi(VentanaPrincipal);
@@ -157,6 +161,7 @@ public:
         actionInverso_Negativo->setText(QApplication::translate("VentanaPrincipal", "Inverso Negativo", Q_NULLPTR));
         actionUmbral->setText(QApplication::translate("VentanaPrincipal", "Umbral", Q_NULLPTR));
         actionUmbral_Binario->setText(QApplication::translate("VentanaPrincipal", "Umbral Binario", Q_NULLPTR));
+        actionUmbral_Binario_Invertido->setText(QApplication::translate("VentanaPrincipal", "Umbral Binario Invertido", Q_NULLPTR));
         labelImagenPrincipal->setText(QApplication::translate("VentanaPrincipal", "Imagen Pricipal", Q_NULLPTR));
         labelHistogranaOriginal->setText(QApplication::translate("VentanaPrincipal", "H Original", Q_NULLPTR));
         labelImagenProcesada->setText(QApplication::translate("VentanaPrincipal", "Imagen Procesada", Q_NULLPTR));

@@ -100,6 +100,24 @@ void VentanaPrincipal::realizarIntervaloUmbralBinario()
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
 }
 
+void VentanaPrincipal::realizarUmbralBinarioInv()
+{
+    QImage imgCopia(imgOriginal->width(), imgOriginal->height(), QImage::Format_Grayscale8);
+    for (int c = 0; c < imgCopia.width(); c++){
+        for (int f = 0; f < imgCopia.height(); f++){
+             QColor pixel = imgOriginal->pixelColor(c,f);
+             auto nivelDeColor = pixel.value();
+             if ( nivelDeColor > u1 && nivelDeColor < u2){
+                 imgCopia.setPixelColor(c,f, QColor(0,0,0));
+             } else {
+                 imgCopia.setPixelColor(c,f, QColor(255,255,255));
+             }
+        }
+    }
+    *imgProcesada = imgCopia;
+    escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+}
+
 void VentanaPrincipal::on_actionAbrir_Imagen_triggered()
 {
     abrirImagen();
@@ -123,4 +141,9 @@ void VentanaPrincipal::on_actionUmbral_triggered()
 void VentanaPrincipal::on_actionUmbral_Binario_triggered()
 {
     realizarIntervaloUmbralBinario();
+}
+
+void VentanaPrincipal::on_actionUmbral_Binario_Invertido_triggered()
+{
+    realizarUmbralBinarioInv();
 }

@@ -27,6 +27,8 @@ private slots:
 
     void on_actionUmbral_Binario_triggered();
 
+    void on_actionUmbral_Binario_Invertido_triggered();
+
 private:
     Ui::VentanaPrincipal *ui;
     QImage *imgOriginal;
@@ -45,6 +47,7 @@ private:
     void realizarInversoNegativo();
     void realizarUmbral();
     void realizarIntervaloUmbralBinario();
+    void realizarUmbralBinarioInv();
 
 };
 
