@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_VentanaPrincipal_t {
-    QByteArrayData data[11];
-    char stringdata0[330];
+    QByteArrayData data[12];
+    char stringdata0[361];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,7 +41,8 @@ QT_MOC_LITERAL(6, 149, 33), // "on_actionUmbral_Binario_trigg..."
 QT_MOC_LITERAL(7, 183, 43), // "on_actionUmbral_Binario_Inver..."
 QT_MOC_LITERAL(8, 227, 30), // "on_actionAbrir_chart_triggered"
 QT_MOC_LITERAL(9, 258, 42), // "on_actionUmbral_Escala_de_Gri..."
-QT_MOC_LITERAL(10, 301, 28) // "on_actionExtension_triggered"
+QT_MOC_LITERAL(10, 301, 28), // "on_actionExtension_triggered"
+QT_MOC_LITERAL(11, 330, 30) // "on_actionTranslacion_triggered"
 
     },
     "VentanaPrincipal\0on_actionAbrir_Imagen_triggered\0"
@@ -52,7 +53,8 @@ QT_MOC_LITERAL(10, 301, 28) // "on_actionExtension_triggered"
     "on_actionUmbral_Binario_Invertido_triggered\0"
     "on_actionAbrir_chart_triggered\0"
     "on_actionUmbral_Escala_de_Grises_triggered\0"
-    "on_actionExtension_triggered"
+    "on_actionExtension_triggered\0"
+    "on_actionTranslacion_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,7 +64,7 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,17 +72,19 @@ static const uint qt_meta_data_VentanaPrincipal[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x08 /* Private */,
-       3,    0,   60,    2, 0x08 /* Private */,
-       4,    0,   61,    2, 0x08 /* Private */,
-       5,    0,   62,    2, 0x08 /* Private */,
-       6,    0,   63,    2, 0x08 /* Private */,
-       7,    0,   64,    2, 0x08 /* Private */,
-       8,    0,   65,    2, 0x08 /* Private */,
-       9,    0,   66,    2, 0x08 /* Private */,
-      10,    0,   67,    2, 0x08 /* Private */,
+       1,    0,   64,    2, 0x08 /* Private */,
+       3,    0,   65,    2, 0x08 /* Private */,
+       4,    0,   66,    2, 0x08 /* Private */,
+       5,    0,   67,    2, 0x08 /* Private */,
+       6,    0,   68,    2, 0x08 /* Private */,
+       7,    0,   69,    2, 0x08 /* Private */,
+       8,    0,   70,    2, 0x08 /* Private */,
+       9,    0,   71,    2, 0x08 /* Private */,
+      10,    0,   72,    2, 0x08 /* Private */,
+      11,    0,   73,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -109,6 +113,7 @@ void VentanaPrincipal::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         case 6: _t->on_actionAbrir_chart_triggered(); break;
         case 7: _t->on_actionUmbral_Escala_de_Grises_triggered(); break;
         case 8: _t->on_actionExtension_triggered(); break;
+        case 9: _t->on_actionTranslacion_triggered(); break;
         default: ;
         }
     }
@@ -140,13 +145,13 @@ int VentanaPrincipal::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

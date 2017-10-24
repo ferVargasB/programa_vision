@@ -16,6 +16,9 @@ VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
     u1 = 40;
     u2 = 140;
     nivelDeUmbral = 76;
+    v.setX(0);
+    v.setY(0);
+    matriz.setToIdentity();
     imgOriginal = new QImage;
     imgProcesada = new QImage;
     escenaOriginal = new QGraphicsScene;
@@ -157,6 +160,32 @@ void VentanaPrincipal::realizarExtension()
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
 }
 
+void VentanaPrincipal::realizarTraslacion()
+{
+    int a = 50;
+    int b = 100;
+    matriz(2,0) = b;
+    matriz(2,1) = a;
+
+    QImage imgCopia(imgOriginal->width()*2, imgOriginal->height()*2, QImage::Format_Grayscale8);
+    for (int c = 0; c < imgOriginal->width(); c++){
+        for (int f = 0; f < imgOriginal->height(); f++){
+            //Primer paso
+             v.setX(c);
+             v.setY(f);
+             //Aplciar Traslacion
+//             vR[0] = ( (matriz(0,0) * v.x()) + (matriz(1,0) * v.x()) + (matriz(2,0) * v.x()) );
+//             vR[1] = ( (matriz(0,1) * v.y()) + (matriz(1,1) * v.y()) + (matriz(2,1) * v.y()) );
+             //Obtener nuevas coordenadas
+              QColor pixel = imgOriginal->pixelColor(c,f);
+              //Aplicar a la nueva imagen
+             imgCopia.setPixelColor(c + a, f + b,pixel);
+        }
+    }
+    *imgProcesada = imgCopia;
+    escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+}
+
 void VentanaPrincipal::on_actionAbrir_Imagen_triggered()
 {
     abrirImagen();
@@ -218,4 +247,9 @@ void VentanaPrincipal::on_actionUmbral_Escala_de_Grises_triggered()
 void VentanaPrincipal::on_actionExtension_triggered()
 {
     realizarExtension();
+}
+
+void VentanaPrincipal::on_actionTranslacion_triggered()
+{
+    realizarTraslacion();
 }

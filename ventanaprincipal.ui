@@ -97,6 +97,7 @@
     <addaction name="actionUmbral_Binario_Invertido"/>
     <addaction name="actionUmbral_Escala_de_Grises"/>
     <addaction name="actionExtension"/>
+    <addaction name="actionTranslacion"/>
    </widget>
    <widget class="QMenu" name="menuArchivo">
     <property name="title">
@@ -160,6 +161,11 @@
   <action name="actionExtension">
    <property name="text">
     <string>Extension</string>
+   </property>
+  </action>
+  <action name="actionTranslacion">
+   <property name="text">
+    <string>Translacion</string>
    </property>
   </action>
  </widget>

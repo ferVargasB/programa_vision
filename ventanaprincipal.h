@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QImage>
 #include <QGraphicsScene>
+#include <QVector2D>
+#include <QGenericMatrix>
+
 namespace Ui {
 class VentanaPrincipal;
 }
@@ -35,12 +38,16 @@ private slots:
 
     void on_actionExtension_triggered();
 
+    void on_actionTranslacion_triggered();
+
 private:
     Ui::VentanaPrincipal *ui;
     QImage *imgOriginal;
     QImage *imgProcesada;
     QGraphicsScene *escenaOriginal;
     QGraphicsScene *escenaProcesada;
+    QGenericMatrix<3,3,int> matriz;
+    QVector2D v;
     int nivelDeUmbral;
     int u1;
     int u2;
@@ -57,6 +64,7 @@ private:
     void realizarUmbralEscalaGrises();
     void realizarEscalaGrisesInv();
     void realizarExtension();
+    void realizarTraslacion();
 
 };
 
