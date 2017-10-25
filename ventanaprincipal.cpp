@@ -7,6 +7,7 @@
 #include <QtCharts>
 #include <QLineSeries>
 #include <QChartView>
+#include <QtMath>
 
 VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
     QMainWindow(parent),
@@ -201,6 +202,83 @@ void VentanaPrincipal::realizarTraslacion()
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
 }
 
+void VentanaPrincipal::realizarRotacion()
+{
+    int angulo = 45;
+
+    QImage imgCopia(imgOriginal->width(), imgOriginal->height(), QImage::Format_Grayscale8);
+    for (int c = 0; c < imgOriginal->width(); c++){
+        for (int f = 0; f < imgOriginal->height(); f++){
+             v.setX(c);
+             v.setY(f);
+             QColor pixel = imgOriginal->pixelColor(c,f);
+             double x = ( (qCos(45) * v.x()) + ((qSin(45) * v.y())) );
+             double y = ( (qSin(45) * v.x()) - ((qCos(45) * v.y())) );
+             imgCopia.setPixelColor(x,y,pixel);
+        }
+    }
+    *imgProcesada = imgCopia;
+    escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+}
+
+void VentanaPrincipal::realizarEscalamiento()
+{
+    QImage imgCopia(imgOriginal->width(), imgOriginal->height(), QImage::Format_Grayscale8);
+    for (int c = 0; c < imgOriginal->width(); c++){
+        for (int f = 0; f < imgOriginal->height(); f++){
+             v.setX(c);
+             v.setY(f);
+             QColor pixel = imgOriginal->pixelColor(c,f);
+             int x = 2;
+             int y = ( (qSin(45) * v.x()) - ((qCos(45) * v.y())) );
+             imgCopia.setPixelColor(x,y,pixel);
+        }
+    }
+    *imgProcesada = imgCopia;
+    escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+}
+
+void VentanaPrincipal::realizarInversoNegativoColor()
+{
+    QImage imgCopia(imgOriginal->width(), imgOriginal->height(), QImage::Format_RGB32);
+    for (int c = 0; c < imgOriginal->width(); c++){
+        for (int f = 0; f < imgOriginal->height(); f++){
+             QColor pixel = imgOriginal->pixelColor(c,f);
+             imgCopia.setPixelColor(c,f,QColor(255 - pixel.red(),255 - pixel.green(),255 - pixel.blue()));
+        }
+    }
+    *imgProcesada = imgCopia;
+    escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
+}
+
+void VentanaPrincipal::realizarTraslacionColor()
+{
+    int a = 50;
+    int b = 100;
+    matriz(2,0) = b;
+    matriz(2,1) = a;
+
+    QImage imgCopia(imgOriginal->width()+a, imgOriginal->height()+b, QImage::Format_RGB32);
+    for (int c = 0; c < imgOriginal->width(); c++){
+        for (int f = 0; f < imgOriginal->height(); f++){
+            //Primer paso
+             v.setX(c);
+             v.setY(f);
+             //Aplciar Traslacion
+//             vR[0] = ( (matriz(0,0) * v.x()) + (matriz(1,0) * v.x()) + (matriz(2,0) * v.x()) );
+//             vR[1] = ( (matriz(0,1) * v.y()) + (matriz(1,1) * v.y()) + (matriz(2,1) * v.y()) );
+             //Obtener nuevas coordenadas
+              QColor pixel = imgOriginal->pixelColor(c,f);
+              //Aplicar a la nueva imagen
+             imgCopia.setPixelColor(c + a, f + b,pixel);
+        }
+    }
+    *imgProcesada = imgCopia;
+    escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+}
+
 void VentanaPrincipal::crearHistogramaOriginal()
 {
     QLineSeries *series = new QLineSeries();
@@ -307,4 +385,28 @@ void VentanaPrincipal::on_actionExtension_triggered()
 void VentanaPrincipal::on_actionTranslacion_triggered()
 {
     realizarTraslacion();
+}
+
+void VentanaPrincipal::on_actionRotacion_triggered()
+{
+    realizarRotacion();
+}
+
+void VentanaPrincipal::on_actionNegativo_a_Imagen_a_Color_triggered()
+{
+    realizarInversoNegativoColor();
+}
+
+void VentanaPrincipal::on_actionAbrir_Imagen_a_Color_triggered()
+{
+    QString archivo = QFileDialog::getOpenFileName(this,
+        tr("Abrir"), "", tr("Archivos de Imagen (*.png *.jpg *.bmp)"));
+    QImage img(archivo);
+    *imgOriginal = img;
+    escenaOriginal->addPixmap(QPixmap::fromImage(*imgOriginal));
+}
+
+void VentanaPrincipal::on_actionTraslacion_Color_triggered()
+{
+    realizarTraslacionColor();
 }

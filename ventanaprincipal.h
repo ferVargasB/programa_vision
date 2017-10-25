@@ -43,6 +43,14 @@ private slots:
 
     void on_actionTranslacion_triggered();
 
+    void on_actionRotacion_triggered();
+
+    void on_actionNegativo_a_Imagen_a_Color_triggered();
+
+    void on_actionAbrir_Imagen_a_Color_triggered();
+
+    void on_actionTraslacion_Color_triggered();
+
 private:
     Ui::VentanaPrincipal *ui;
     QImage *imgOriginal;
@@ -68,6 +76,10 @@ private:
     void realizarEscalaGrisesInv();
     void realizarExtension();
     void realizarTraslacion();
+    void realizarRotacion();
+    void realizarEscalamiento();
+    void realizarInversoNegativoColor();
+    void realizarTraslacionColor();
 
     //Funciones para el los histogramas
     void crearHistogramaOriginal();

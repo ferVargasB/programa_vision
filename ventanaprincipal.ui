@@ -72,6 +72,9 @@
     <addaction name="actionUmbral_Escala_de_Grises"/>
     <addaction name="actionExtension"/>
     <addaction name="actionTranslacion"/>
+    <addaction name="actionRotacion"/>
+    <addaction name="actionNegativo_a_Imagen_a_Color"/>
+    <addaction name="actionTraslacion_Color"/>
    </widget>
    <widget class="QMenu" name="menuArchivo">
     <property name="title">
@@ -79,6 +82,7 @@
     </property>
     <addaction name="actionAbrir_Imagen"/>
     <addaction name="actionAbrir_chart"/>
+    <addaction name="actionAbrir_Imagen_a_Color"/>
    </widget>
    <addaction name="menuOperadores"/>
    <addaction name="menuArchivo"/>
@@ -140,6 +144,26 @@
   <action name="actionTranslacion">
    <property name="text">
     <string>Translacion</string>
+   </property>
+  </action>
+  <action name="actionRotacion">
+   <property name="text">
+    <string>Rotacion</string>
+   </property>
+  </action>
+  <action name="actionNegativo_a_Imagen_a_Color">
+   <property name="text">
+    <string>Negativo a Imagen a Color</string>
+   </property>
+  </action>
+  <action name="actionAbrir_Imagen_a_Color">
+   <property name="text">
+    <string>Abrir Imagen a Color</string>
+   </property>
+  </action>
+  <action name="actionTraslacion_Color">
+   <property name="text">
+    <string>Traslacion Color</string>
    </property>
   </action>
  </widget>
