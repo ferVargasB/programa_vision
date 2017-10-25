@@ -44,6 +44,7 @@ public:
     QAction *actionNegativo_a_Imagen_a_Color;
     QAction *actionAbrir_Imagen_a_Color;
     QAction *actionTraslacion_Color;
+    QAction *actionEscalar;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QVBoxLayout *layOutOriginal;
@@ -91,6 +92,8 @@ public:
         actionAbrir_Imagen_a_Color->setObjectName(QStringLiteral("actionAbrir_Imagen_a_Color"));
         actionTraslacion_Color = new QAction(VentanaPrincipal);
         actionTraslacion_Color->setObjectName(QStringLiteral("actionTraslacion_Color"));
+        actionEscalar = new QAction(VentanaPrincipal);
+        actionEscalar->setObjectName(QStringLiteral("actionEscalar"));
         centralWidget = new QWidget(VentanaPrincipal);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -158,6 +161,7 @@ public:
         menuOperadores->addAction(actionExtension);
         menuOperadores->addAction(actionTranslacion);
         menuOperadores->addAction(actionRotacion);
+        menuOperadores->addAction(actionEscalar);
         menuOperadores->addAction(actionNegativo_a_Imagen_a_Color);
         menuOperadores->addAction(actionTraslacion_Color);
         menuArchivo->addAction(actionAbrir_Imagen);
@@ -186,6 +190,7 @@ public:
         actionNegativo_a_Imagen_a_Color->setText(QApplication::translate("VentanaPrincipal", "Negativo a Imagen a Color", Q_NULLPTR));
         actionAbrir_Imagen_a_Color->setText(QApplication::translate("VentanaPrincipal", "Abrir Imagen a Color", Q_NULLPTR));
         actionTraslacion_Color->setText(QApplication::translate("VentanaPrincipal", "Traslacion Color", Q_NULLPTR));
+        actionEscalar->setText(QApplication::translate("VentanaPrincipal", "Escalar", Q_NULLPTR));
         labelImagenPrincipal->setText(QApplication::translate("VentanaPrincipal", "Principal", Q_NULLPTR));
         labelImagenProcesada->setText(QApplication::translate("VentanaPrincipal", "Imagen Procesada", Q_NULLPTR));
         menuOperadores->setTitle(QApplication::translate("VentanaPrincipal", "Operadores", Q_NULLPTR));

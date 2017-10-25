@@ -8,6 +8,7 @@
 #include <QLineSeries>
 #include <QChartView>
 #include <QtMath>
+#include <QPen>
 
 VentanaPrincipal::VentanaPrincipal(QWidget *parent) :
     QMainWindow(parent),
@@ -218,24 +219,27 @@ void VentanaPrincipal::realizarRotacion()
         }
     }
     *imgProcesada = imgCopia;
+    ui->graphicsViewProcesada->rotate(45);
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarEscalamiento()
 {
-    QImage imgCopia(imgOriginal->width(), imgOriginal->height(), QImage::Format_Grayscale8);
+    QImage imgCopia(imgOriginal->width()*2, imgOriginal->height()*2, QImage::Format_Grayscale8);
     for (int c = 0; c < imgOriginal->width(); c++){
         for (int f = 0; f < imgOriginal->height(); f++){
              v.setX(c);
              v.setY(f);
              QColor pixel = imgOriginal->pixelColor(c,f);
-             int x = 2;
-             int y = ( (qSin(45) * v.x()) - ((qCos(45) * v.y())) );
-             imgCopia.setPixelColor(x,y,pixel);
+             imgCopia.setPixelColor(v.x()*2,v.y()*2,pixel);
         }
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
+
+    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarInversoNegativoColor()
@@ -249,8 +253,6 @@ void VentanaPrincipal::realizarInversoNegativoColor()
     }
     *imgProcesada = imgCopia;
     escenaProcesada->addPixmap(QPixmap::fromImage(*imgProcesada));
-
-    crearHistogramaProcesada();
 }
 
 void VentanaPrincipal::realizarTraslacionColor()
@@ -305,7 +307,112 @@ void VentanaPrincipal::crearHistogramaOriginal()
 
 void VentanaPrincipal::crearHistogramaProcesada()
 {
+    QLineSeries *series = new QLineSeries();
+    QChart *chart = new QChart();
 
+    for (int i = 0; i < imgProcesada->width(); i++){
+        for (int j = 0; j <imgProcesada->height(); j++){
+            QColor pixel = imgProcesada->pixelColor(i,j);
+            auto valorPixel = pixel.value();
+            QPoint coordenadaPixel(i, valorPixel);
+            series->append(coordenadaPixel);
+        }
+    }
+
+    chart->addSeries(series);
+    chart->createDefaultAxes();
+    chart->setTitle("Histograma");
+    chart->legend()->hide();
+    QChartView *chartView = new QChartView(chart,this);
+    ui->layOutProcesada->addWidget(chartView);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->show();
+}
+
+void VentanaPrincipal::crearHistogramaOriginalColor()
+{
+    QLineSeries *series = new QLineSeries();
+    QLineSeries *series2 = new QLineSeries();
+    QLineSeries *series3 = new QLineSeries();
+
+    series->setColor(Qt::red);
+    series2->setColor(Qt::green);
+    series3->setColor(Qt::blue);
+
+
+
+    QChart *chart = new QChart();
+
+    for (int i = 0; i < imgOriginal->width(); i++){
+        for (int j = 0; j <imgOriginal->height(); j++){
+            QColor pixel = imgOriginal->pixelColor(i,j);
+            auto valorPixelRojo = pixel.red();
+            auto valorPixelVerde = pixel.green();
+            auto valorPixelAzul = pixel.blue();
+            QPoint coordenadaPixelRojo(i, valorPixelRojo);
+            QPoint coordenadaPixelVerde(i, valorPixelVerde);
+            QPoint coordenadaPixelAzul(i, valorPixelAzul);
+            series->append(coordenadaPixelRojo);
+            series2->append(coordenadaPixelVerde);
+            series3->append(coordenadaPixelAzul);
+        }
+    }
+
+
+
+    chart->addSeries(series);
+    chart->addSeries(series2);
+    chart->addSeries(series3);
+    chart->createDefaultAxes();
+    chart->setTitle("Histograma");
+    chart->legend()->hide();
+    QChartView *chartView = new QChartView(chart,this);
+    ui->layOutOriginal->addWidget(chartView);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->show();
+}
+
+void VentanaPrincipal::crearHistogramaProcesadaColor()
+{
+    QLineSeries *series = new QLineSeries();
+    QLineSeries *series2 = new QLineSeries();
+    QLineSeries *series3 = new QLineSeries();
+
+    series->setColor(Qt::red);
+    series2->setColor(Qt::green);
+    series3->setColor(Qt::blue);
+
+
+
+    QChart *chart = new QChart();
+
+    for (int i = 0; i < imgProcesada->width(); i++){
+        for (int j = 0; j <imgProcesada->height(); j++){
+            QColor pixel = imgProcesada->pixelColor(i,j);
+            auto valorPixelRojo = pixel.red();
+            auto valorPixelVerde = pixel.green();
+            auto valorPixelAzul = pixel.blue();
+            QPoint coordenadaPixelRojo(i, valorPixelRojo);
+            QPoint coordenadaPixelVerde(i, valorPixelVerde);
+            QPoint coordenadaPixelAzul(i, valorPixelAzul);
+            series->append(coordenadaPixelRojo);
+            series2->append(coordenadaPixelVerde);
+            series3->append(coordenadaPixelAzul);
+        }
+    }
+
+
+
+    chart->addSeries(series);
+    chart->addSeries(series2);
+    chart->addSeries(series3);
+    chart->createDefaultAxes();
+    chart->setTitle("Histograma");
+    chart->legend()->hide();
+    QChartView *chartView = new QChartView(chart,this);
+    ui->layOutProcesada->addWidget(chartView);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->show();
 }
 
 void VentanaPrincipal::on_actionAbrir_Imagen_triggered()
@@ -395,6 +502,7 @@ void VentanaPrincipal::on_actionRotacion_triggered()
 void VentanaPrincipal::on_actionNegativo_a_Imagen_a_Color_triggered()
 {
     realizarInversoNegativoColor();
+    crearHistogramaProcesadaColor();
 }
 
 void VentanaPrincipal::on_actionAbrir_Imagen_a_Color_triggered()
@@ -404,9 +512,17 @@ void VentanaPrincipal::on_actionAbrir_Imagen_a_Color_triggered()
     QImage img(archivo);
     *imgOriginal = img;
     escenaOriginal->addPixmap(QPixmap::fromImage(*imgOriginal));
+
+    crearHistogramaOriginalColor();
 }
 
 void VentanaPrincipal::on_actionTraslacion_Color_triggered()
 {
     realizarTraslacionColor();
+    crearHistogramaProcesadaColor();
+}
+
+void VentanaPrincipal::on_actionEscalar_triggered()
+{
+    realizarEscalamiento();
 }

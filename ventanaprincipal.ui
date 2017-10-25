@@ -73,6 +73,7 @@
     <addaction name="actionExtension"/>
     <addaction name="actionTranslacion"/>
     <addaction name="actionRotacion"/>
+    <addaction name="actionEscalar"/>
     <addaction name="actionNegativo_a_Imagen_a_Color"/>
     <addaction name="actionTraslacion_Color"/>
    </widget>
@@ -164,6 +165,11 @@
   <action name="actionTraslacion_Color">
    <property name="text">
     <string>Traslacion Color</string>
+   </property>
+  </action>
+  <action name="actionEscalar">
+   <property name="text">
+    <string>Escalar</string>
    </property>
   </action>
  </widget>

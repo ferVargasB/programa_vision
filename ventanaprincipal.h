@@ -51,6 +51,8 @@ private slots:
 
     void on_actionTraslacion_Color_triggered();
 
+    void on_actionEscalar_triggered();
+
 private:
     Ui::VentanaPrincipal *ui;
     QImage *imgOriginal;
@@ -84,6 +86,8 @@ private:
     //Funciones para el los histogramas
     void crearHistogramaOriginal();
     void crearHistogramaProcesada();
+    void crearHistogramaOriginalColor();
+    void crearHistogramaProcesadaColor();
 
 };
 
